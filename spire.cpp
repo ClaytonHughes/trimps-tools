@@ -81,7 +81,8 @@ Spire::Spire(int argc, char **argv):
 	no_core_downgrade(false),
 	income(false),
 	towers(false),
-	score_func(damage_score)
+	score_func(damage_score),
+	tower_type("")
 {
 	instance = this;
 
@@ -101,7 +102,6 @@ Spire::Spire(int argc, char **argv):
 	std::string budget_str;
 	std::string core_budget_str;
 	unsigned keep_core_mods = 0;
-	std::string tower_type;
 	unsigned towers_seen = 0;
 
 	GetOpt getopt;
@@ -763,6 +763,8 @@ void Spire::report(const Layout &layout, const string &message)
 		console << "Mode:   " << (income ? "income" : "damage");
 		if(towers)
 			console << "+towers";
+		if (!tower_type.empty())
+			console << " (" << tower_type << ")";
 		console.set_cursor_position(58, 5);
 		console << "Budget: " << print_num(budget) << " Rs";
 		console.set_cursor_position(58, 7);

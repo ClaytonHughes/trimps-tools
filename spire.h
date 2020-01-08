@@ -75,6 +75,7 @@ private:
 	bool no_core_downgrade;
 	bool income;
 	bool towers;
+	std::string tower_type;
 	Pool::ScoreFunc *score_func;
 	Layout start_layout;
 	Layout best_layout;
